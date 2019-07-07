@@ -15,7 +15,7 @@
     <div style="margin:20px 0;"></div>
     <div class="easyui-panel" style="padding:5px">
         <ul id="gamecc" class="easyui-tree" lines="true" >
-            <li>
+            @*<li>
                 <span>My Documents</span>
                 <ul>
                     <li >
@@ -45,26 +45,34 @@
                     <li>about.html</li>
                     <li>welcome.html</li>
                 </ul>
-            </li>
+            </li>*@
         </ul>
     </div>
 
 </body>
 </html>
 <script>
-    $('#gamecc').tree({
-        onClick: function (node) {
-            console.log(node.text);
-        },
+    //$('#gamecc').tree({
+    //    onClick: function (node) {
+    //        console.log(node.text);
+    //    },
      
-        onLoadSuccess: function (node, data) {
-            if (data) {
-                $(data).each(function (index, value) {
-                    if (this.state == 'open') {
-                        $('#gamecc').tree('collapseAll');
-                    }
-                })
-            }
+    //    onLoadSuccess: function (node, data) {
+    //        if (data) {
+    //            $(data).each(function (index, value) {
+    //                if (this.state == 'open') {
+    //                    $('#gamecc').tree('collapseAll');
+    //                }
+    //            })
+    //        }
+    //    }
+    //});
+
+    $('#gamecc').tree({
+        url: '/testui/GetUserTreeJson',
+        onClick: function (node) {
+            console.log(node.id)
         }
     });
+
 </script>
