@@ -1,0 +1,70 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="~/jquery-easyui-1.7.0/themes/default/easyui.css" rel="stylesheet" />
+    <link href="~/jquery-easyui-1.7.0/themes/icon.css" rel="stylesheet" />
+    <link href="~/jquery-easyui-1.7.0/demo/demo.css" rel="stylesheet" />
+    <script src="~/jquery-easyui-1.7.0/jquery.min.js"></script>
+    <script src="~/jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+</head>
+<body>
+    <div style="margin:20px 0;"></div>
+    <div class="easyui-panel" style="padding:5px">
+        <ul id="gamecc" class="easyui-tree" lines="true" >
+            <li>
+                <span>My Documents</span>
+                <ul>
+                    <li >
+                        <span>Photos</span>
+                        <ul>
+                            <li>
+                                <span>Friend</span>
+                            </li>
+                            <li>
+                                <span>Wife</span>
+                            </li>
+                            <li>
+                                <span>Company</span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span>Program Files</span>
+                        <ul>
+                            <li>Intel</li>
+                            <li>Java</li>
+                            <li>Microsoft Office</li>
+                            <li>Games</li>
+                        </ul>
+                    </li>
+                    <li>index.html</li>
+                    <li>about.html</li>
+                    <li>welcome.html</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>
+<script>
+    $('#gamecc').tree({
+        onClick: function (node) {
+            console.log(node.text);
+        },
+     
+        onLoadSuccess: function (node, data) {
+            if (data) {
+                $(data).each(function (index, value) {
+                    if (this.state == 'open') {
+                        $('#gamecc').tree('collapseAll');
+                    }
+                })
+            }
+        }
+    });
+</script>
